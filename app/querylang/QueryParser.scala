@@ -65,7 +65,7 @@ class QueryParser (val input: ParserInput ) extends Parser {
 
   def LiteralNum = rule {  capture(Number)  ~> toNum  }
 
-  def LiteralStr = rule {  ch(''') ~ (capture(zeroOrMore(CharPredicate.AlphaNum)) ~> LiteralString ) ~ ch(''') }
+  def LiteralStr = rule {  ch(''') ~ (capture(zeroOrMore(CharPredicate.AlphaNum | ch('-'))) ~> LiteralString ) ~ ch(''') }
 
   def Property = rule { capture(NameString)  ~> PropertyExpr ~ WS}
 

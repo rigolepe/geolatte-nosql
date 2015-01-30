@@ -48,7 +48,7 @@ case class TestDataGenerator(ll: Point, ur: Point, minLength: Double, maxLength:
     new LineString(psBuilder.toPointSequence)
   }
 
-  def feature(id: Int): JsObject = {
+  def feature(id: String): JsObject = {
     Json.obj(
       "geometry" -> Json.toJson(line),
       "id" -> id,
@@ -64,7 +64,7 @@ case class TestDataGenerator(ll: Point, ur: Point, minLength: Double, maxLength:
       def hasNext: Boolean = cnt < num
 
       def next(): JsObject = {
-        val f = feature(cnt)
+        val f = feature(cnt.toString)
         cnt += 1
         f
       }
